@@ -124,6 +124,6 @@ typedef enum {
  The CoreData CLLocationManager. Read-only property that you can access to configure
  manager with settings.
  */
-@property (strong, readonly) CLLocationManager *locationManager;
+@property (nonatomic, strong, readonly) CLLocationManager *locationManager;
 
 @end
