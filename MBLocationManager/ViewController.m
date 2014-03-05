@@ -7,9 +7,10 @@
 //
 
 #import "ViewController.h"
+#import "MBLocationManager.h"
 
 @interface ViewController ()
-
+@property (nonatomic, weak) IBOutlet UILabel *locationLabel;
 @end
 
 @implementation ViewController
@@ -17,13 +18,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(changeLocation:)
+                                                 name:kMBLocationManagerNotificationLocationUpdatedName
+                                               object:nil];
 }
 
-- (void)didReceiveMemoryWarning
+
+-(void)changeLocation:(NSNotification*)notification
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    CLLocation *location = [[MBLocationManager sharedManager] currentLocation];
+    self.locationLabel.text = [NSString stringWithFormat:@"%f,%f", location.coordinate.latitude, location.coordinate.longitude];
+    NSLog(@"Location changed to %@", self.locationLabel.text);
 }
+
 
 @end

@@ -22,6 +22,8 @@
 		D2BCEB3618C7CF3600FEC8CD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BCEB1518C7CF3600FEC8CD /* UIKit.framework */; };
 		D2BCEB3E18C7CF3600FEC8CD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2BCEB3C18C7CF3600FEC8CD /* InfoPlist.strings */; };
 		D2BCEB4018C7CF3600FEC8CD /* MBLocationManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCEB3F18C7CF3600FEC8CD /* MBLocationManagerTests.m */; };
+		D2BCEB4B18C7CF5400FEC8CD /* MBLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D2BCEB4A18C7CF5400FEC8CD /* MBLocationManager.m */; };
+		D2BCEB4D18C7D84000FEC8CD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BCEB4C18C7D84000FEC8CD /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,9 @@
 		D2BCEB3B18C7CF3600FEC8CD /* MBLocationManagerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MBLocationManagerTests-Info.plist"; sourceTree = "<group>"; };
 		D2BCEB3D18C7CF3600FEC8CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D2BCEB3F18C7CF3600FEC8CD /* MBLocationManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBLocationManagerTests.m; sourceTree = "<group>"; };
+		D2BCEB4918C7CF5400FEC8CD /* MBLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBLocationManager.h; sourceTree = "<group>"; };
+		D2BCEB4A18C7CF5400FEC8CD /* MBLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBLocationManager.m; sourceTree = "<group>"; };
+		D2BCEB4C18C7D84000FEC8CD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2BCEB4D18C7D84000FEC8CD /* CoreLocation.framework in Frameworks */,
 				D2BCEB1418C7CF3600FEC8CD /* CoreGraphics.framework in Frameworks */,
 				D2BCEB1618C7CF3600FEC8CD /* UIKit.framework in Frameworks */,
 				D2BCEB1218C7CF3600FEC8CD /* Foundation.framework in Frameworks */,
@@ -103,6 +109,7 @@
 		D2BCEB1018C7CF3600FEC8CD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D2BCEB4C18C7D84000FEC8CD /* CoreLocation.framework */,
 				D2BCEB1118C7CF3600FEC8CD /* Foundation.framework */,
 				D2BCEB1318C7CF3600FEC8CD /* CoreGraphics.framework */,
 				D2BCEB1518C7CF3600FEC8CD /* UIKit.framework */,
@@ -114,6 +121,8 @@
 		D2BCEB1718C7CF3600FEC8CD /* MBLocationManager */ = {
 			isa = PBXGroup;
 			children = (
+				D2BCEB4918C7CF5400FEC8CD /* MBLocationManager.h */,
+				D2BCEB4A18C7CF5400FEC8CD /* MBLocationManager.m */,
 				D2BCEB2018C7CF3600FEC8CD /* AppDelegate.h */,
 				D2BCEB2118C7CF3600FEC8CD /* AppDelegate.m */,
 				D2BCEB2318C7CF3600FEC8CD /* Main_iPhone.storyboard */,
@@ -256,6 +265,7 @@
 				D2BCEB2B18C7CF3600FEC8CD /* ViewController.m in Sources */,
 				D2BCEB2218C7CF3600FEC8CD /* AppDelegate.m in Sources */,
 				D2BCEB1E18C7CF3600FEC8CD /* main.m in Sources */,
+				D2BCEB4B18C7CF5400FEC8CD /* MBLocationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
