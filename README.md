@@ -12,24 +12,23 @@ Main features:
 * instantiate location manager once, use it wherever you need by subscribing to notification
 
 
-
 ## Installation
 Installation should be done via Cocoa Pods. 
 
 Install CocoaPods if you didn't yet:
-``bash
+```bash
 sudo gem install cocoapods
 pod setup
-``
+```
 
 Change to the directory of your Xcode project, and Create and Edit your ``Podfile`` and add following line
-``
+```
 pod 'MBLocationManager', '~> 0.1.0'
-``
+```
 
-``bash
+```bash
 pod install
-``
+```
 
 Open your project in Xcode from the .xcworkspace file (not the usual project file)
 
@@ -37,11 +36,11 @@ Open your project in Xcode from the .xcworkspace file (not the usual project fil
 ## Usage
 
 
-### 1. Start tracking location 
+#### 1. Start tracking location 
 To start tracking location on the device, call ``startLocationUpdates:distanceFilter:accuracy`` from 
 ``application:didFinishLaunchingWithOptions`` in the AppDelegate.h
 
-``objectivec
+```objectivec
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [[MBLocationManager sharedManager] startLocationUpdates:kMBLocationManagerModeStandard
@@ -50,14 +49,14 @@ To start tracking location on the device, call ``startLocationUpdates:distanceFi
 
     return YES;
 }
-``
+```
 
-### 2. Subscribe to the notification events
+#### 2. Subscribe to the notification events
 From the viewcontroller where you intend to use a location of the device, subscribe to notification 
 which is triggered whenever a new location is detected. When notification is posted, access 
 MBLocationManager's property ``currentLocation``
 
-``objectivec
+```objectivec
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -73,10 +72,13 @@ MBLocationManager's property ``currentLocation``
     CLLocation *location = [[MBLocationManager sharedManager] currentLocation];
     NSLog(@"Location changed to %@", self.locationLabel.text);
 }
-``
+```
 
-### 3. (Optional) Pause & resume location updates when application changes states
-``objectivec
+#### 3. (Optional) Pause location updates when in background
+To improve battery life, you might prevent app from tracking location changes when
+entering background.
+
+```objectivec
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
    [[MBLocationManager sharedManager] stopLocationUpdates];
@@ -90,9 +92,11 @@ MBLocationManager's property ``currentLocation``
 {
     [[MBLocationManager sharedManager] stopLocationUpdates];
 }
-``
+```
 
 ## Fine-tune CoreLocation settings
 By accessing ``locationManager`` property you are able to fine-tune CoreLocation settings, such as
-``activityType`` and ``pausesLocationUpdatesAutomatically``
+``activityType`` and ``pausesLocationUpdatesAutomatically``. 
+
+CoreLocation documentation:
 https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManager_Class/CLLocationManager/CLLocationManager.html#//apple_ref/occ/cl/CLLocationManager
