@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "MBLocationManager"
-  s.version      = "0.1.0"
+  s.version      = "0.1.1"
   s.summary      = "Location manager provides convenient and easy-to-use access to latest iOS device location."
 
   s.description  = <<-DESC
@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.author             = { "Matej Balantič" => "matej@balantic.si" }
   s.social_media_url = "http://twitter.com/skavt"
   s.platform     = :ios
-  s.source       = { :git => "https://github.com/MatejBalantic/MBLocationManager.git", :tag => "0.1.0" }
+  s.source       = { :git => "https://github.com/MatejBalantic/MBLocationManager.git", :tag => "0.1.1" }
   s.source_files  = 'Classes', 'MBLocationManager/MB*.{h,m}'
   s.framework  = 'CoreLocation'
 end
