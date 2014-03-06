@@ -1,6 +1,6 @@
 //
-//  GETCLocationManager.h
-//  GoEuroTechnicalTest
+//  MBLocationManager.m
+//  MBLocationManager
 //
 //  Created by Matej Balantič on 02/02/14.
 //  Copyright (c) 2014 Matej Balantič. All rights reserved.
