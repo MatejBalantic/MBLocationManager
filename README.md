@@ -2,7 +2,7 @@ MBLocationManager
 =================
 
 Location manager provides convenient and easy-to-use access to latest iOS device location. It wraps CoreLocation
-with convenient singelon class, releaving you of keeping reference to location manager object.
+with convenient singleton class, relieving you of keeping reference to location manager object.
 
 Main features:
 * subscribe to location updates with 3 lines of code
