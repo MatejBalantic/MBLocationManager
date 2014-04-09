@@ -116,5 +116,12 @@
                                                         object:self];
 }
 
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    // notify failed location update
+    [[NSNotificationCenter defaultCenter] postNotificationName:kMBLocationManagerNotificationFailedName
+                                                        object:self
+                                                      userInfo:@{@"error": error}];
+}
 
 @end
