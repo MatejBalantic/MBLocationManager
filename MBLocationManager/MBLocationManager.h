@@ -14,6 +14,7 @@
  Notification posted when location of the device changes
  */
 static NSString *kMBLocationManagerNotificationLocationUpdatedName = @"MBLocationManagerNotificationLocationUpdated";
+static NSString *kMBLocationManagerNotificationFailedName = @"MBLocationManagerNotificationFailed";
 
 /**
  MBLocationManagerMonitorMode
