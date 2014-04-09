@@ -52,9 +52,13 @@ To start tracking location on the device, call ``startLocationUpdates:distanceFi
 ```
 
 #### 2. Subscribe to the notification events
-From the viewcontroller where you intend to use a location of the device, subscribe to notification 
+From the viewcontroller where you intend to use a location of the device, subscribe to notification ``kMBLocationManagerNotificationLocationUpdatedName``
 which is triggered whenever a new location is detected. When notification is posted, access 
 MBLocationManager's property ``currentLocation``
+
+Notification ``kMBLocationManagerNotificationFailedName`` informs you about failed attempt to determine 
+the location (see   [locationManager:didFailWithError](https://developer.apple.com/library/ios/documentation/CoreLocation/Reference/CLLocationManagerDelegate_Protocol/CLLocationManagerDelegate/CLLocationManagerDelegate.html#jumpTo_7) )
+
 
 ```objectivec
 - (void)viewDidLoad
@@ -65,6 +69,17 @@ MBLocationManager's property ``currentLocation``
                                              selector:@selector(changeLocation:)
                                                  name:kMBLocationManagerNotificationLocationUpdatedName
                                                object:nil];
+                                               
+                                               
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(locationManagerFailed:)
+                                                 name:kMBLocationManagerNotificationFailedName
+                                               object:nil];
+}
+
+-(void)locationManagerFailed:(NSNotification*)notification
+{
+   NSLog(@"Location manager failed");
 }
 
 -(void)changeLocation:(NSNotification*)notification
