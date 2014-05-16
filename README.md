@@ -23,7 +23,7 @@ pod setup
 
 Change to the directory of your Xcode project, and Create and Edit your ``Podfile`` and add following line
 ```
-pod 'MBLocationManager', '~> 0.1.0'
+pod 'MBLocationManager'
 ```
 
 ```bash
