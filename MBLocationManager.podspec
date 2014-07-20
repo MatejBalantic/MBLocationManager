@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.author             = { "Matej Balantič" => "matej@balantic.si" }
   s.social_media_url = "http://twitter.com/skavt"
   s.platform     = :ios
-  s.source       = { :git => "https://github.com/MatejBalantic/MBLocationManager.git", :tag => "0.1.2" }
+  s.source       = { :git => "https://github.com/MatejBalantic/MBLocationManager.git", :tag => "#{s.version}" }
   s.source_files  = 'Classes', 'MBLocationManager/MB*.{h,m}'
   s.framework  = 'CoreLocation'
   s.requires_arc = true
