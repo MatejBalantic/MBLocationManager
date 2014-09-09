@@ -17,6 +17,11 @@ static NSString *kMBLocationManagerNotificationLocationUpdatedName = @"MBLocatio
 static NSString *kMBLocationManagerNotificationFailedName = @"MBLocationManagerNotificationFailed";
 
 /**
+ Notification posted when the authorization status changes
+ */
+static NSString *kMBLocationManagerNotificationAuthorizationChangedName = @"MBLocationManagerNotificationAuthorizationChangedName";
+
+/**
  MBLocationManagerMonitorMode
  `kMBLocationManagerModeStandard` triggers CoreLocation's `startUpdatingLocation`, which
  uses device's built-in GPS to determine location. Such location will be more acurate, but

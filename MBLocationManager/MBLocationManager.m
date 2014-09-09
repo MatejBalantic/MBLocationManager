@@ -124,4 +124,9 @@
                                                       userInfo:@{@"error": error}];
 }
 
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kMBLocationManagerNotificationAuthorizationChangedName
+                                                        object:self userInfo:@{@"status": @(status)}];
+}
+
 @end
