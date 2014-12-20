@@ -2,24 +2,22 @@
 //  MBLocationManager.m
 //  MBLocationManager
 //
-//  Created by Matej Balantič on 02/02/14.
 //  Copyright (c) 2014 Matej Balantič. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
-
 /**
  Notification posted when location of the device changes
  */
-static NSString *kMBLocationManagerNotificationLocationUpdatedName = @"MBLocationManagerNotificationLocationUpdated";
-static NSString *kMBLocationManagerNotificationFailedName = @"MBLocationManagerNotificationFailed";
+static NSString *const kMBLocationManagerNotificationLocationUpdatedName = @"MBLocationManagerNotificationLocationUpdated";
+static NSString *const kMBLocationManagerNotificationFailedName = @"MBLocationManagerNotificationFailed";
 
 /**
  Notification posted when the authorization status changes
  */
-static NSString *kMBLocationManagerNotificationAuthorizationChangedName = @"MBLocationManagerNotificationAuthorizationChangedName";
+static NSString *const kMBLocationManagerNotificationAuthorizationChangedName = @"MBLocationManagerNotificationAuthorizationChangedName";
 
 /**
  MBLocationManagerMonitorMode
@@ -40,8 +38,6 @@ typedef enum {
     kMBLocationManagerModeStandardWhenInUse, // this is new in iOS 8 - app can request for permission for only when app is in use
     kMBLocationManagerModeSignificantLocationUpdates
 } MBLocationManagerMonitorMode;
-
-
 
 
 
@@ -125,12 +121,12 @@ typedef enum {
  * The last known location of the user's device. This information may be used
     to display user's location in the app or do calculation based on that.
  */
-@property (strong, readonly) CLLocation *currentLocation;
+@property (readonly) CLLocation *currentLocation;
 
 /**
  The CoreData CLLocationManager. Read-only property that you can access to configure
  manager with settings.
  */
-@property (nonatomic, strong, readonly) CLLocationManager *locationManager;
+@property (nonatomic, readonly) CLLocationManager *locationManager;
 
 @end
