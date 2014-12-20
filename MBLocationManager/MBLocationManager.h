@@ -37,6 +37,7 @@ static NSString *kMBLocationManagerNotificationAuthorizationChangedName = @"MBLo
  */
 typedef enum {
     kMBLocationManagerModeStandard,
+    kMBLocationManagerModeStandardWhenInUse, // this is new in iOS 8 - app can request for permission for only when app is in use
     kMBLocationManagerModeSignificantLocationUpdates
 } MBLocationManagerMonitorMode;
 

@@ -54,20 +54,45 @@
         _locationManager = [[CLLocationManager alloc] init];
         _locationManager.delegate = self;
     }
-    
+
     return _locationManager;
 }
+#pragma mark - Authorization (iOS 8)
+/**
+ iOS 8 requires you to request authorisation prior to stating location updates
+ */
+-(void)requestAlwaysAuthorization
+{
+    if (![self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]) {
+        return;
+    }
 
+    [self.locationManager requestAlwaysAuthorization];
+}
+-(void)requestWhenInUseAuthorization
+{
+    if (![self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        return;
+    }
+
+    [self.locationManager requestWhenInUseAuthorization];
+}
 #pragma mark - Location update
 -(void)startLocationUpdates
 {
     if (self.mode == kMBLocationManagerModeStandard) {
+        [self requestAlwaysAuthorization]; // for significant location changes this auth is required (>= ios8)
+        [self.locationManager startUpdatingLocation];
+    }
+    else if (self.mode == kMBLocationManagerModeStandardWhenInUse) {
+        [self requestWhenInUseAuthorization]; // for significant location changes this auth is required (>= ios8)
         [self.locationManager startUpdatingLocation];
     }
     else {
+        [self requestAlwaysAuthorization]; // for significant location changes this auth is required (>= ios8)
         [self.locationManager startMonitoringSignificantLocationChanges];
     }
-    
+
     // based on docs, locationmanager's location property is populated with latest
     // known location even before we started monitoring, so let's simulate a change
     if (self.locationManager.location) {
