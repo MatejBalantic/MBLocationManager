@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "MBLocationManager"
-  s.version      = "0.1.3"
+  s.version      = "0.2.0"
   s.summary      = "Location manager provides convenient and easy-to-use access to latest iOS device location."
 
   s.description  = <<-DESC
