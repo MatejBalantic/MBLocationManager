@@ -108,7 +108,7 @@
 #pragma mark - Private
 
 /**
- iOS 8 requires you to request authorisation prior to stating location updates
+ iOS 8 requires you to request authorisation prior to starting location updates
  */
 - (void)requestAlwaysAuthorization
 {
