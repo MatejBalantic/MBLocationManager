@@ -1,3 +1,4 @@
 language: objective-c
 xcode_workspace: MBLocationManager.xcworkspace
 xcode_scheme: MBLocationManager
+xcode_sdk: iphonesimulator
