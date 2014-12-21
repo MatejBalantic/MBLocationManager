@@ -48,7 +48,7 @@ typedef enum {
  
     It also contains convenient methods for calculating distance between two places.
  */
-@interface MBLocationManager : NSObject <CLLocationManagerDelegate>
+@interface MBLocationManager : NSObject
 
 /**
  Returns shared (singleton) instance of the location manager

@@ -7,7 +7,7 @@
 
 #import "MBLocationManager.h"
 
-@interface MBLocationManager ()
+@interface MBLocationManager () <CLLocationManagerDelegate>
 
 @property (nonatomic) CLLocationManager *locationManager;
 @property (nonatomic) CLLocation *currentLocation;
@@ -16,6 +16,10 @@
 @end;
 
 @implementation MBLocationManager
+
+#pragma mark - Static
+
+static MBLocationManager *sharedManager;
 
 #pragma mark - Initialization
 
@@ -38,13 +42,10 @@
 #pragma mark - Public static methods
 
 + (MBLocationManager *)sharedManager {
-    static dispatch_once_t pred;
-    static MBLocationManager *shared;
-    
-    dispatch_once(&pred, ^{
-        shared = [[MBLocationManager alloc] init];
-    });
-    return shared;
+    if (sharedManager == nil) {
+        sharedManager = [[MBLocationManager alloc] init];
+    };
+    return sharedManager;
 }
 
 + (float)kilometresBetweenPlace1:(CLLocation*)place1 andPlace2:(CLLocation*) place2
@@ -128,6 +129,11 @@
     [self.locationManager requestWhenInUseAuthorization];
 }
 
++ (void)setSharedManager:(MBLocationManager *)manager
+{
+    sharedManager = manager;
+}
+
 #pragma mark - CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
@@ -151,7 +157,6 @@
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
-    // notify failed location update
     [[NSNotificationCenter defaultCenter] postNotificationName:kMBLocationManagerNotificationFailedName
                                                         object:self
                                                       userInfo:@{@"error": error}];
