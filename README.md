@@ -47,7 +47,7 @@ As of iOS 8 you are required to define a message that will be presented to the u
 * ``NSLocationWhenInUseUsageDescription``
 * ``NSLocationAlwaysUsageDescription``
 
-Make sure you enter this key in the right .plist file (common mistake is entering it into test-Info.plist). Also do not to add the actual message text as a value. **Failing to add the key(s) to plist file will prevent your app to ask for user permission and thus will render location updates useless.**
+Make sure you enter this key in the right .plist file (common mistake is entering it into test-Info.plist). Also do not forget to add the actual message text as a value. **Failing to add the key(s) and it's values to the plist file will prevent your app from asking for user permission and thus will render location updates useless.**
 
 #### 2. Start tracking location 
 To start tracking location on the device, call ``startLocationUpdates:distanceFilter:accuracy`` from 
