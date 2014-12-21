@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/MatejBalantic/MBLocationManager.svg)](https://travis-ci.org/MatejBalantic/MBLocationManager)
+
 MBLocationManager
 =================
 
@@ -6,11 +8,14 @@ with convenient singleton class, relieving you of keeping reference to location 
 
 Main features:
 * subscribe to location updates with 3 lines of code
-* two modes of operation: GPS (accurate with low battery performance) and cell towers (inaccurate with better battery performance)
+* three modes of operation: track user's location only when application is in use (iOS 8 only), track the location even when in background or track only significant location changes
 * use CoreLocation's distance filters and accuracy modes
 * easy pause and resume on app going to background or foreground
 * instantiate location manager once, use it wherever you need by subscribing to notification
 
+Integrates with iOS 7 and the new iOS 8 CoreLocation APIs.
+
+Now also fully unit tested.
 
 ## Installation
 Installation should be done via Cocoa Pods. 
@@ -35,15 +40,23 @@ Open your project in Xcode from the .xcworkspace file (not the usual project fil
 
 ## Usage
 
+#### 1. Add required .plist entries
 
-#### 1. Start tracking location 
+As of iOS 8 you are required to define a message that will be presented to the user on location authorization request. You define this message into your app's  *-Info.plist file. You need to add at least one of the following keys, depending on which location update mode you request:
+
+* ``NSLocationWhenInUseUsageDescription``
+* ``NSLocationAlwaysUsageDescription``
+
+Make sure you enter this key in the right .plist file (common mistake is entering it into test-Info.plist). Also do not to add the actual message text as a value. **Failing to add the key(s) to plist file will prevent your app to ask for user permission and thus will render location updates useless.**
+
+#### 2. Start tracking location 
 To start tracking location on the device, call ``startLocationUpdates:distanceFilter:accuracy`` from 
 ``application:didFinishLaunchingWithOptions`` in the AppDelegate.h
 
 ```objectivec
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[MBLocationManager sharedManager] startLocationUpdates:kMBLocationManagerModeStandard
+    [[MBLocationManager sharedManager] startLocationUpdates:kMBLocationManagerModeStandardWhenInUse
                                              distanceFilter:kCLDistanceFilterNone
                                                    accuracy:kCLLocationAccuracyThreeKilometers];
 
@@ -51,7 +64,7 @@ To start tracking location on the device, call ``startLocationUpdates:distanceFi
 }
 ```
 
-#### 2. Subscribe to the notification events
+#### 3. Subscribe to the notification events
 From the viewcontroller where you intend to use a location of the device, subscribe to notification ``kMBLocationManagerNotificationLocationUpdatedName``
 which is triggered whenever a new location is detected. When notification is posted, access 
 MBLocationManager's property ``currentLocation``
@@ -89,7 +102,7 @@ the location (see   [locationManager:didFailWithError](https://developer.apple.c
 }
 ```
 
-#### 3. (Optional) Pause location updates when in background
+#### 4. (Optional) Pause location updates when in background
 To improve battery life, you might prevent app from tracking location changes when
 entering background.
 
