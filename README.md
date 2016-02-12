@@ -18,7 +18,7 @@ Integrates with iOS 7 and the new iOS 8 CoreLocation APIs.
 Now also fully unit tested.
 
 ## Installation
-Installation should be done via Cocoa Pods. 
+Installation should be done via CocoaPods. 
 
 Install CocoaPods if you didn't yet:
 ```bash
